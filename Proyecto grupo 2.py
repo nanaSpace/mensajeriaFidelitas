@@ -7,6 +7,8 @@ print("")
 print(" Bienvenido(a) a Mensajeria Fidelitas")
 print("")
 
+# Variables
+
 correoElectronico = 0
 
 nombreDeComercio = 0
@@ -18,7 +20,10 @@ nombreDelDueno = 0
 ubicacionDelLocal= 0
 
 respuesta = 'si'
-respuesta == 'no' 
+respuesta == 'no'
+
+cobro = 'tarjeta'
+cobro == 'efectivo'
 
 while True:
     print("")
@@ -28,16 +33,19 @@ while True:
     print("")
     print("3. Crear factura electronica")
     print("")
-    print("4. Salir")
+    print("4. Crear un paquete")
+    print("")
+    print("5. Salir")
     print("")
 
     opcion = input("Ingrese una opción: ")
+
 
     if opcion == '1':
 
         #Registro de cuenta de usuario
 
-        correoElectronico = input (" Ingrese su correo electrónico: ")
+        correoElectronico = input(" Ingrese su correo electrónico: ")
         nombreDeComercio = input("Ingrese el nombre del comercio: ")
         telefonoDeComercio = input("Ingrese el teléfono del comercio: ")
         nombreDelDueno = input("Ingrese el nombre del dueño: ")
@@ -84,7 +92,7 @@ while True:
             print("No se encontró ningún usuario con ese correo.")
             print("")
 
-    elif opcion == '4':
+    elif opcion == '5':
         break
 
     else:
@@ -126,15 +134,33 @@ while True:
             print("Gracias por su compra")
             
 
-        
+  
+#Parte Anthony (Creación de paquete)
+            
+    if opcion == '4':
 
+        #Datos para creación de paquetes
 
-        
-    
-    
+        destinatario = input("Ingrese el nombre del destinatario:" )
+        numeroTelefono = int(input("Ingrese el número de telefono del Destinatario:" ))
+        cedula = int(input("Digite el número de cédula:" ))
+        peso = float(input("Ingrese el peso del paquete en Kilogramos:" ))
+        cobro = input("Ingrese forma de pago Tarjeta o Efectivo:" )
 
+        if cobro == 'tarjeta':
+            pin = int(input("Dijite el PIN de su tarjeta:" ))
+            monto = float(input("Monto en colones a Cancelar en la entrega:" ))
 
+        else:
+            cobro == 'efectivo'
+            monto = float(input("Monto en colones a Cancelar en la entrega:" ))
 
+        #Impirmir los datos
 
-
-#Parte Martines (Creación de paquetes)
+        print("Nombre del destinatario:", destinatario)
+        print("Numero telefonico del destinario:", numeroTelefono)
+        print("Número de Cédula: ", cedula)
+        print("Peso total del paquete:", peso)
+        print("Forma de Pago:", cobro)
+        print("Monto a Cancelar:" , monto)
+        print("Lugar de entrega:", ubicacionDelLocal)
