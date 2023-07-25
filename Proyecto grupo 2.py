@@ -20,6 +20,8 @@ nombreDelDueno = 0
 
 ubicacionDelLocal= 0
 
+paquetes = {}
+
 respuesta = 'si'
 respuesta == 'no'
 
@@ -163,12 +165,19 @@ while True:
         print("Monto a Cancelar:" , monto)
         print("Lugar de entrega:", ubicacionDelLocal)
 
-#CAMBIO DE ESTADO DE PAQUETE
+#CAMBIO DE ESTADO DE PAQUETE ANTHONY Y DARYL
     if opcion == '5':
-        estado= ["Creado", "Recolectado" , "Entrega Fallida" ,"Entregado"]
-        for x in range(len(estado)):
-            print(estado[x])
-            
+        guia = int(input("Ingrese el número de guía del paquete:"))
+
+        if guia in paquetes:
+            paquete = paquetes[guia]
+            if paquete["estado"] == "En tránsito":
+                tiempo_actual = time.time()
+                tiempo_creacion = paquete["tiempo_creacion"]
+                if tiempo_actual - tiempo_creacion >= 20:
+                    paquete["estado"] = "Entregado"
+                    print("El paquete ha sido entregado.")    
+        
     elif opcion == '6':
         break
 
