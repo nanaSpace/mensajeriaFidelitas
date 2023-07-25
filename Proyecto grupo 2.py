@@ -7,6 +7,7 @@ print("")
 print(" Bienvenido(a) a Mensajeria Fidelitas")
 print("")
 
+
 # Variables
 
 correoElectronico = 0
@@ -35,7 +36,9 @@ while True:
     print("")
     print("4. Crear un paquete")
     print("")
-    print("5. Salir")
+    print("5. Ver estado del paquete")
+    print("")
+    print("6. Salir")
     print("")
 
     opcion = input("Ingrese una opción: ")
@@ -92,11 +95,6 @@ while True:
             print("No se encontró ningún usuario con ese correo.")
             print("")
 
-    elif opcion == '5':
-        break
-
-    else:
-        print("Opción inválida. Intente nuevamente.")
 
 
 #Parte Daryl y Alex(Registro de factura electrónica)
@@ -164,3 +162,15 @@ while True:
         print("Forma de Pago:", cobro)
         print("Monto a Cancelar:" , monto)
         print("Lugar de entrega:", ubicacionDelLocal)
+
+#CAMBIO DE ESTADO DE PAQUETE
+    if opcion == '5':
+        estado= ["Creado", "Recolectado" , "Entrega Fallida" ,"Entregado"]
+        for x in range(len(estado)):
+            print(estado[x])
+            
+    elif opcion == '6':
+        break
+
+    else:
+        print("Opción inválida. Intente nuevamente.")
