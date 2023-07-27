@@ -1,14 +1,19 @@
-#Trabajo grupo 2 mensajeria Fidelitas
+import time
 
+respuesta = 'si'
+respuesta == 'no'
 
+respuesta1 = 'si'
+respuesta1 == 'no'
 
-#Parte Diana y Franco (Registrar una cuenta de usuario)
-print("")
-print(" Bienvenido(a) a Mensajeria Fidelitas")
-print("")
+cobro = 'tarjeta'
+cobro == 'efectivo'
 
-
-# Variables
+correoElectronico = ""
+nombreDeComercio = ""
+telefonoDeComercio = ""
+nombreDelDueno = ""
+ubicacionDelLocal = ""
 
 correoElectronico = 0
 
@@ -22,11 +27,172 @@ ubicacionDelLocal= 0
 
 paquetes = {}
 
-respuesta = 'si'
-respuesta == 'no'
+def archivoUsuarios():
+    file=open("datosUsuarios.txt","w")
+    file.close()
+    
+def crearUsuario():
+    correoElectronico = input(" Ingrese su correo electrónico: ")
+    nombreDeComercio = input("Ingrese el nombre del comercio: ")
+    telefonoDeComercio = input("Ingrese el teléfono del comercio: ")
+    nombreDelDueno = input("Ingrese el nombre del dueño: ")
+    ubicacionDelLocal = input("Ingrese la ubicación del local: ")
+    file = open("datosUsuarios.txt","a")
+    file.write("COrreo Electronico: " + correoElectronico)
+    file.write("\n")
+    file.write("Nombre del comercio: " + nombreDeComercio)
+    file.write("\n")
+    file.write("Telefono del comercio: " + telefonoDeComercio)
+    file.write("\n")
+    file.write("Nombre del dueño: " + nombreDelDueno)
+    file.write("\n")
+    file.write("Ubicacion del local: " + ubicacionDelLocal)
+    file.write("\n")
+    print("La informacion fue grabada correctamente!")
+    file.close()
+    
+def mostrarUsiario():
+    file=open("datosUsuarios.txt","r")
+    mensaje = file.read()
+    print(mensaje)
+    file.close()
 
-cobro = 'tarjeta'
-cobro == 'efectivo'
+def buscarUsuario():
+    buscarCorreo = input("Ingrese el correo del usuario a buscar: ")
+    usuario = correoElectronico
+        
+    if usuario == buscarCorreo:
+
+        print("Correo electrónico:", correoElectronico)
+        print("")
+        print("Nombre del comercio:", nombreDeComercio)
+        print("")
+        print("Teléfono del comercio:", telefonoDeComercio)
+        print("")
+        print("Nombre del dueño:", nombreDelDueno)
+        print("")
+        print("Ubicación del local:", ubicacionDelLocal)
+        print("")
+
+    else :
+        print("")
+        print("No se encontró ningún usuario con ese correo.")
+        print("")
+
+def archivoFactElectronica():
+    file=open("facturaElectronica.txt","w")
+    file.close()
+
+def crearFactElectronica():
+    cedula = input( "Ingrese numero de cedula fisica o juridica: ")
+    nombre = input(" Nombre de la persona o empresa: ")
+    numeroTelefonico = input(" Numero de telefono de la persona o empresa: ")
+    direccionPostal = input("Ingrese la direccion de la casa o empresa: ")
+    correo= input("Ingrese su correo electronico: ")
+    file = open("facturaElectronica.txt","a")
+    file.write(cedula)
+    file.write("\n")
+    file.write(nombre)
+    file.write("\n")
+    file.write(numeroTelefonico)
+    file.write("\n")
+    file.write(direccionPostal)
+    file.write("\n")
+    file.write(correo)
+    file.write("\n")
+    print("La informacion fue grabada correctamente!")
+    file.close()
+    respuesta = input(f'¿Desea cambiar un dato? si/no: ')
+
+    if respuesta == 'si':
+        cedula = input( "Ingrese numero de cedula fisica o juridica: ")
+        nombre = input(" Nombre de la persona o empresa: ")
+        numeroTelefonico = input(" Numero de telefono de la persona o empresa: ")
+        direccionPostal = input("Ingrese la direccion de la casa o empresa: ")
+        correo= input("Ingrese su correo electronico: ")
+        file = open("facturaElectronica.txt","a")
+        file.write("Cédula: " + cedula)
+        file.write("\n")
+        file.write("Nombre:" + nombre)
+        file.write("\n")
+        file.write("Numero de telefono: " +numeroTelefonico)
+        file.write("\n")
+        file.write("Direccion: " + direccionPostal)
+        file.write("\n")
+        file.write("Correo Electronico: " + correo)
+        file.write("\n")
+        print("La informacion fue grabada correctamente!")
+        file.close()
+        file=open("facturaElectronica.txt","r")
+        mensaje = file.read()
+        print(mensaje)
+        file.close()
+            
+    else:
+        respuesta == 'no'
+        file=open("facturaElectronica.txt","r")
+        mensaje = file.read()
+        print(mensaje)
+        file.close()
+
+def generar_numero_guia():
+    return int(time.time())
+        
+def archivoPaquete():
+    file=open("datosPaquete.txt","w")
+    file.close()
+    
+def crearPaquete():
+    destinatario = input("Ingrese el nombre del destinatario:" )
+    numeroTelefono = input("Ingrese el número de telefono del Destinatario:" )
+    cedula = input("Digite el número de cédula:" )
+    peso = input("Ingrese el peso del paquete en Kilogramos:" )
+    cobro = input("Ingrese forma de pago Tarjeta o Efectivo:" )
+    print("La informacion fue grabada correctamente!")
+
+    if cobro == 'tarjeta':
+            pin = input("Dijite el PIN de su tarjeta:" )
+            monto = input("Monto en colones a Cancelar en la entrega:" )
+                    
+
+    else:
+        monto = input("Monto en colones a Cancelar en la entrega:" )
+        
+
+    numeroGuia = generar_numero_guia()
+
+        # Guardar el paquete en el diccionario
+    paquete = {
+        "destinatario": destinatario,
+        "numeroTelefono": numeroTelefono,
+        "cedula": cedula,
+        "peso": peso,
+        "cobro": cobro,
+        "monto": monto,
+        "ubicacionDelLocal": ubicacionDelLocal,
+        "estado": "En tránsito",  # Asumimos que el paquete se encuentra en tránsito al crearse.
+        "tiempo_creacion": time.time(),  # Guardamos el tiempo de creación del paquete.
+    }
+
+    paquetes[numeroGuia] = paquete
+
+    print("Número de Guía:", numeroGuia)
+    print("Nombre del destinatario:", destinatario)
+    print("Número telefónico del destinatario:", numeroTelefono)
+    print("Número de Cédula:", cedula)
+    print("Peso total del paquete:", peso, "Kg")
+    print("Forma de Pago:", cobro)
+    print("Monto a Cancelar:", monto, "colones")
+    print("Lugar de entrega:", ubicacionDelLocal)
+    print("Estado del paquete: Creado")
+
+
+def mostrarDatosPaquete():
+    file=open("datosPaquete.txt","r")
+    mensaje = file.read()
+    print(mensaje)
+    file.close()
+
 
 while True:
     print("")
@@ -42,144 +208,46 @@ while True:
     print("")
     print("6. Salir")
     print("")
-
+   
     opcion = input("Ingrese una opción: ")
 
-
     if opcion == '1':
-
-        #Registro de cuenta de usuario
-
-        correoElectronico = input(" Ingrese su correo electrónico: ")
-        nombreDeComercio = input("Ingrese el nombre del comercio: ")
-        telefonoDeComercio = input("Ingrese el teléfono del comercio: ")
-        nombreDelDueno = input("Ingrese el nombre del dueño: ")
-        ubicacionDelLocal = input("Ingrese la ubicación del local: ")
-
-        # Imprimir los datos ingresados
-        print("Datos de la cuenta registrada:")
-        print("")
-        print("Correo electrónico:", correoElectronico)
-        print("")
-        print("Nombre del comercio:", nombreDeComercio)
-        print("")
-        print("Teléfono del comercio:", telefonoDeComercio)
-        print("")
-        print("Nombre del dueño:", nombreDelDueno)
-        print("")
-        print("Ubicación del local:", ubicacionDelLocal)
-        print("")
-        print("Cuenta creada exitosamente.")
-
-        #Diana
-
-    elif opcion == '2':
-        
-        buscarCorreo = input("Ingrese el correo del usuario a buscar: ")
-        usuario = correoElectronico
-        
-
-        if usuario == buscarCorreo:
-
-            print("Correo electrónico:", correoElectronico)
-            print("")
-            print("Nombre del comercio:", nombreDeComercio)
-            print("")
-            print("Teléfono del comercio:", telefonoDeComercio)
-            print("")
-            print("Nombre del dueño:", nombreDelDueno)
-            print("")
-            print("Ubicación del local:", ubicacionDelLocal)
-            print("")
-
-        else :
-            print("")
-            print("No se encontró ningún usuario con ese correo.")
-            print("")
-
-
-
-#Parte Daryl y Alex(Registro de factura electrónica)
-
+        archivoUsuarios()
+        crearUsuario()
+        mostrarUsiario()
+    if opcion == '2':
+        buscarUsuario()
     if opcion == '3':
-        #Registro de factura electronica
-        cedula = input( "Ingrese numero de cedula fisica o juridica: ")
-        nombre = input(" Nombre de la persona o empresa: ")
-        numeroTelefonico = input(" Numero de telefono de la persona o empresa: ")
-        direccionPostal = input("Ingrese la direccion de la casa o empresa: ")
-        correo= input("Ingrese su correo electronico: ")
-        respuesta = input(f'¿Desea cambiar un dato? si/no: ')
-
-        if respuesta == 'si':
-            cedula = input( "Ingrese numero de cedula fisica o juridica: ")
-            nombre = input(" Nombre de la persona o empresa: ")
-            numeroTelefonico = input(" Numero de telefono de la persona o empresa: ")
-            direccionPostal = input("Ingrese la direccion de la casa o empresa: ")
-            correo= input("Ingrese su correo electronico: ")
-            print("Datos para la factura electronica:")
-            print("cedula fisica o juridica: ", cedula)
-            print("Nombre de la persona o empresa: ",nombre)
-            print("Numero telefonico de la persona o empresa: ",numeroTelefonico)
-            print("Direccion de la casa o empresa: ",direccionPostal)
-            print("Correo electronico: ",correo)
-            
-        else:
-            respuesta == 'no'
-            print("Datos para la factura electronica:")
-            print("cedula fisica o juridica: ", cedula)
-            print("Nombre de la persona o empresa: ",nombre)
-            print("Numero telefonico de la persona o empresa: ",numeroTelefonico)
-            print("Direccion de la casa o empresa: ",direccionPostal)
-            print("Correo electronico: ",correo)
-            print("Gracias por su compra")
-            
-
-  
-#Parte Anthony (Creación de paquete)
-            
+        archivoFactElectronica()
+        crearFactElectronica()
     if opcion == '4':
-
-        #Datos para creación de paquetes
-
-        destinatario = input("Ingrese el nombre del destinatario:" )
-        numeroTelefono = int(input("Ingrese el número de telefono del Destinatario:" ))
-        cedula = int(input("Digite el número de cédula:" ))
-        peso = float(input("Ingrese el peso del paquete en Kilogramos:" ))
-        cobro = input("Ingrese forma de pago Tarjeta o Efectivo:" )
-
-        if cobro == 'tarjeta':
-            pin = int(input("Dijite el PIN de su tarjeta:" ))
-            monto = float(input("Monto en colones a Cancelar en la entrega:" ))
-
-        else:
-            cobro == 'efectivo'
-            monto = float(input("Monto en colones a Cancelar en la entrega:" ))
-
-        #Impirmir los datos
-
-        print("Nombre del destinatario:", destinatario)
-        print("Numero telefonico del destinario:", numeroTelefono)
-        print("Número de Cédula: ", cedula)
-        print("Peso total del paquete:", peso)
-        print("Forma de Pago:", cobro)
-        print("Monto a Cancelar:" , monto)
-        print("Lugar de entrega:", ubicacionDelLocal)
-
-#CAMBIO DE ESTADO DE PAQUETE ANTHONY Y DARYL
+        archivoPaquete()
+        crearPaquete()
+        mostrarDatosPaquete()
     if opcion == '5':
-        guia = int(input("Ingrese el número de guía del paquete:"))
-
-        if guia in paquetes:
-            paquete = paquetes[guia]
-            if paquete["estado"] == "En tránsito":
-                tiempo_actual = time.time()
-                tiempo_creacion = paquete["tiempo_creacion"]
-                if tiempo_actual - tiempo_creacion >= 20:
-                    paquete["estado"] = "Entregado"
-                    print("El paquete ha sido entregado.")    
+        import time
+        numeroGuia = generar_numero_guia()
+        respuesta1 = input('¿Ya recibió el paquete ? si/no: ')
         
-    elif opcion == '6':
+        if respuesta1 == 'si':
+            print("Estado del paquete: Entregado")
+            
+        else:
+            print("Estado del paquete: En ruta")
+            time.sleep(5)
+            print("Estado del paquete: En epera")
+            time.sleep(5)
+            print("Estado del paquete: No se retiro, entrega fallida")
+            print("Si el estado aparece como entrega fallida, debera a volver a solicitar el envio del paquete")
+            
+    if opcion == "6":
         break
 
-    else:
-        print("Opción inválida. Intente nuevamente.")
+    
+     
+
+    
+
+        
+        
+
