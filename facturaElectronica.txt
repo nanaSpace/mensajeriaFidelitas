@@ -1,0 +1,5 @@
+Cédula: 42323443
+Nombre: daniel
+Numero de telefono:423434
+Direccion Postal: heredia
+Correo: daniel@gmail.com
