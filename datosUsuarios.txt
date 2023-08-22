@@ -1,5 +1,6 @@
-Correo Electronico: adsds
-Nombre del comercio: asdasd
-Telefono del comercio: dasd
-Nombre del dueño: asdsa
+Correo Electronico: huhu
+Nombre del comercio: fefe
+Telefono del comercio: 12358
+Nombre del dueño: jorge
+numero de cedula: 357159
 Ubicacion del local: heredia
